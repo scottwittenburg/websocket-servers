@@ -1,0 +1,33 @@
+.DS_Store
+node_modules
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# virtual environments
+server/aiohttp/aiohttp_venv
+server/fastapi/fastapi_venv
+server/tornado/tornado_venv
+
+# pycache files
+server/aiohttp/__pycache__
+server/fastapi/__pycache__
+server/tornado/__pycache__
