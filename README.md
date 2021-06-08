@@ -1,4 +1,4 @@
-# example-project
+# Websocket Server Experimentation
 
 Simple client application using websockets, and three equivalent backend implementations:
 
@@ -8,10 +8,13 @@ Simple client application using websockets, and three equivalent backend impleme
 
 ## Project setup
 
-Steps to get project up and running
+Steps to get project up and running.  All commands given below should be executed from the root of the repo.  At a high level the steps are:
+
+1. Build the client application (Client setup)
+2. Install and run a server implementation (Pick one from Server setup)
+3. Run the application (point your browser at http://localhost:8080/static/index.html)
 
 ### Client setup
-
 
 ```
 npm install
@@ -22,7 +25,7 @@ This will install dependencies and build the application.
 
 ### Server setup
 
-Within the `server` directory, find three subdirectories, one for each implementation.
+Within the `server` directory, you should find three subdirectories, one for each implementation.
 
 #### Tornado
 
@@ -71,8 +74,3 @@ Run:
 ```
 python server/fastapi/main.py
 ```
-
-
-## Run the client application
-
-Point your browser at http://localhost:8080/static/index.html
