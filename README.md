@@ -34,7 +34,8 @@ Install:
 ```
 python3 -m venv server/tornado/tornado_venv
 source server/tornado/tornado_venv/bin/activate
-pip install --upgrade pip tornado
+pip install --upgrade pip
+pip install tornado
 ```
 
 Run:
@@ -50,7 +51,8 @@ Install:
 ```
 python3 -m venv server/aiohttp/aiohttp_venv
 source server/aiohttp/aiohttp_venv/bin/activate
-pip install --upgrade pip aiohttp[speedups]
+pip install --upgrade pip
+pip install aiohttp[speedups]
 ```
 
 Run:
@@ -66,7 +68,8 @@ Install:
 ```
 python3 -m venv server/fastapi/fastapi_venv
 source server/fastapi/fastapi_venv/bin/activate
-pip install --upgrade pip fastapi[all]
+pip install --upgrade pip
+pip install fastapi[all]
 ```
 
 Run:
