@@ -7,6 +7,7 @@
     <textarea id="msgsReceivedArea" readonly rows=10 cols=100 v-model="messageList"></textarea>
     <input type="text" size="100" v-model="messageToSend">
     <input type="button" value="Send" v-on:click="sendMessage" :disabled="connected === false">
+    <input type="button" value="Hit custom" v-on:click="customRequest" :disabled="connected === false">
   </div>
 </template>
 
@@ -49,6 +50,9 @@ export default {
         console.log(evt);
         self.cleanup();
       };
+    },
+    customRequest() {
+
     },
     disconnect() {
       this.ws.close();
