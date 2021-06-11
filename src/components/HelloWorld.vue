@@ -7,11 +7,12 @@
     <textarea id="msgsReceivedArea" readonly rows=10 cols=100 v-model="messageList"></textarea>
     <input type="text" size="100" v-model="messageToSend">
     <input type="button" value="Send" v-on:click="sendMessage" :disabled="connected === false">
-    <input type="button" value="Hit custom" v-on:click="customRequest" :disabled="connected === false">
+    <input type="button" value="Custom endpoint" v-on:click="customEndpoint" :disabled="connected === false">
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'HelloWorld',
   props: {
@@ -51,9 +52,6 @@ export default {
         self.cleanup();
       };
     },
-    customRequest() {
-
-    },
     disconnect() {
       this.ws.close();
       this.cleanup();
@@ -68,6 +66,18 @@ export default {
       this.messageToSend = '';
       this.ws = null;
     },
+    customEndpoint() {
+      console.log('Sending another request to /custom');
+      axios.get('/custom')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    }
   },
 }
 </script>
