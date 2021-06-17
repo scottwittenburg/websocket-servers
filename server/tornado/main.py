@@ -1,4 +1,6 @@
+import asyncio
 import os
+import time
 
 import tornado.ioloop
 import tornado.web
@@ -23,6 +25,12 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         print("WebSocket closed")
 
 
+class LongRunningHandler(tornado.web.RequestHandler):
+    async def get(self):
+        await asyncio.sleep(15)
+        self.write("That was a nice nap!")
+
+
 def make_app():
     # This page shows how to set up static file serving:
     #
@@ -38,6 +46,7 @@ def make_app():
 
     return tornado.web.Application([
         (r"/ws", EchoWebSocket),
+        (r"/slow", LongRunningHandler)
     ], **settings)
 
 

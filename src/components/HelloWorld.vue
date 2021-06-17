@@ -2,12 +2,12 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <input type="button" value="Connect" v-on:click="connect" :disabled="connected === true">
-    <input type="button" value="Disonnect" v-on:click="disconnect" :disabled="connected === false">
+    <input type="button" value="Disconnect" v-on:click="disconnect" :disabled="connected === false">
     <label for="msgsReceivedArea">Received Messages</label>
     <textarea id="msgsReceivedArea" readonly rows=10 cols=100 v-model="messageList"></textarea>
-    <input type="text" size="100" v-model="messageToSend">
+    <input type="text" size="100" v-on:keydown.enter="sendMessage" v-model="messageToSend">
     <input type="button" value="Send" v-on:click="sendMessage" :disabled="connected === false">
-    <input type="button" value="Custom endpoint" v-on:click="customEndpoint" :disabled="connected === false">
+    <input type="button" value="Expensive Operation" v-on:click="customEndpoint">
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
         self.ws.send("Hello server");
       };
       this.ws.onmessage = function (evt) {
-         self.msgsReceived.push(evt.data);
+         self.msgsReceived.unshift(evt.data);
       };
       this.ws.onerror = function (evt) {
         console.log('client websocket error handler');
@@ -67,10 +67,11 @@ export default {
       this.ws = null;
     },
     customEndpoint() {
-      console.log('Sending another request to /custom');
-      axios.get('/custom')
+      console.log('Sending request to /slow');
+      axios.get('/slow')
         .then(function (response) {
           // handle success
+          alert(response.data)
           console.log(response);
         })
         .catch(function (error) {
